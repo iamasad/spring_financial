@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record model="crm.lead.stage" id="lead_stage_new">
+        <field name="name">New</field>
+        <field name="sequence">1</field>
+    </record>
+    <record model="crm.lead.stage" id="lead_stage_review">
+        <field name="name">Under Review</field>
+        <field name="sequence">2</field>
+    </record>
+    <record model="crm.lead.stage" id="lead_stage_done">
+        <field name="name">Complete</field>
+        <field name="fold" eval="False" />
+        <field name="is_complete">True</field>
+        <field name="sequence">100</field>
+    </record>
+</odoo>

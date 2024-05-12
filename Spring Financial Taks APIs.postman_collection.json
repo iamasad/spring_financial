@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "413cbffb-bc09-49c6-953b-36f58f818fdc",
+		"name": "Spring Financial Taks APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20264963"
+	},
+	"item": [
+		{
+			"name": "login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"params\": {\r\n        \"db\": \"odoo17c\",  //pass your db name\r\n        \"login\": \"admin\", //pass actual username\r\n        \"password\": \"admin\" \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/web/session/authenticate",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"web",
+						"session",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_country",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"params\": {\r\n        \"model\": \"res.country\",\r\n        \"method\": \"search_read\",\r\n        \"args\": [\r\n            []\r\n        ],\r\n        \"kwargs\": {\r\n            \"fields\": [\r\n                \"id\",\r\n                \"name\",\r\n                \"code\"\r\n            ]\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/web/dataset/call_kw",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"web",
+						"dataset",
+						"call_kw"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_contact",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "// Passing same data for creating contact as given in task doc\r\n{\r\n    \"name\": \"Test\",\r\n    \"Phone\": \"204 556 6565\",\r\n    \"email\": \"test@gmail.com\",\r\n    \"street\": \"125 Milross Ave\",\r\n    \"city\": \"Vancouver\",\r\n    \"zip\": \"7VG XG8\",\r\n    \"state\": \"BC\",\r\n    \"country\": \"Canada\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/create_contact",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"create_contact"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8069",
+			"type": "string"
+		}
+	]
+}
